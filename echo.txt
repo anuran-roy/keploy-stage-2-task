@@ -1,0 +1,1 @@
+{ "error": false, "category": "Misc", "type": "single", "joke": "Never date a baker. They're too kneady.", "flags": { "nsfw": false, "religious": false, "political": false, "racist": false, "sexist": false, "explicit": false }, "safe": true, "id": 271, "lang": "en" }
