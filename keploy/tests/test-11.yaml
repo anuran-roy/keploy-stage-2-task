@@ -1,0 +1,31 @@
+version: api.keploy.io/v1beta2
+kind: Http
+name: test-11
+spec:
+    metadata: {}
+    req:
+        method: GET
+        proto_major: 1
+        proto_minor: 1
+        url: /joke
+        header:
+            Accept: '*/*'
+            User-Agent: curl/7.81.0
+        body: ""
+        body_type: utf-8
+    resp:
+        status_code: 200
+        header:
+            Content-Type: application/json; charset=UTF-8
+        body: |
+            {"ID":0,"CreatedAt":"2023-03-09T22:37:00.597167+05:30","UpdatedAt":"2023-03-09T22:37:00.597167+05:30","DeletedAt":null,"Id":221,"Joke":"Two SQL tables sit at the bar. A query approaches and asks \"Can I join you?\"","Category":"Programming"}
+        body_type: utf-8
+        status_message: ""
+        proto_major: 1
+        proto_minor: 1
+    objects:
+        - type: error
+          data: H4sIAAAAAAAA/wEAAP//AAAAAAAAAAA=
+    assertions:
+        noise: []
+    created: 1679322251
