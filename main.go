@@ -9,9 +9,12 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 	"strings"
 
 	"github.com/joho/godotenv"
+	"github.com/keploy/go-sdk/integrations/kecho/v4"
+	"github.com/keploy/go-sdk/keploy"
 	"github.com/labstack/echo/v4"
 	"gorm.io/gorm"
 )
@@ -109,12 +112,22 @@ func main() {
 	e := echo.New()
 	db, _ := database.Connect()
 
+	k := keploy.New(keploy.Config{
+		App: keploy.AppConfig{
+			Name: "echo-gorm",
+			Port: os.Getenv("PORT"),
+		},
+		Server: keploy.ServerConfig{
+			URL: "http://localhost:6789/api",
+		},
+	})
 	e.Use(middlewares.ContextDB(db))
+	e.Use(kecho.EchoMiddlewareV4(k))
 
 	e.GET("/", func(c echo.Context) error {
 		return c.String(http.StatusOK, "Hello, World!")
 	})
 	e.GET("/joke", getJoke)
 	e.GET("/new_joke", getNewJoke)
-	e.Logger.Fatal(e.Start(":1323"))
+	e.Logger.Fatal(e.Start(fmt.Sprintf("%s:%s", os.Getenv("HOST"), os.Getenv("PORT"))))
 }

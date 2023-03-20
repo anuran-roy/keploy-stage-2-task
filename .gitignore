@@ -3,3 +3,5 @@
 **/echo-gorm
 **/*.json
 **/*.txt
+**/samples-go
+**/keploy
