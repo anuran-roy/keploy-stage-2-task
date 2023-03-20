@@ -4,4 +4,3 @@
 **/*.json
 **/*.txt
 **/samples-go
-**/keploy

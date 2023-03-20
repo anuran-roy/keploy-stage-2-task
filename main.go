@@ -79,7 +79,7 @@ func getNewJoke(ctx echo.Context) error {
 		new_joke.Category = resp_struct.Category
 
 		msg := db.Select("Joke", "Category", "Id").Create(&new_joke)
-		fmt.Printf("\n\nRows affected = %d", msg.RowsAffected)
+		fmt.Println("\n\nRows affected = ", msg.RowsAffected)
 		return ctx.JSON(http.StatusOK, new_joke)
 	}
 }
